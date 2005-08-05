@@ -1,0 +1,52 @@
+v0.88 Wed Feb  2 10:28:37 CST 2005
+- added resultSetId and resultSetIdleTime to searchRetrieve output
+
+v0.87 Tue Feb  1 12:17:54 CST 2005
+- added ability to set numberOfRecords() in searchRetrieve request: 
+  thanks Bernd Diekmann
+
+v0.86 Tue Jan 11 09:16:41 CST 2005
+- removed diagnostic handling for explain responses that lack version and
+  operator
+- fixed explain response to use <record> element properly
+
+v0.85 Mon Dec 20 21:53:06 CST 2004
+- added diagnostic when a default explain is returned when no operator was
+  specified
+
+v0.8 Fri Dec 17 11:32:40 AST 2004
+- renamed SRU::Application to SRU::Server
+
+v0.7 Thu Dec  9 00:43:08 CST 2004
+- new tests for exception handling
+- newFromCGI() now forces ampersands in query string
+- removed base parameter from request constructors since it wasn't used
+- fixed nesting problem with <record> in explain response (thanks Eric Morgan)
+
+v0.6 Mon Dec  6 13:58:46 CST 2004
+- needed to add SRU::Application to the MANIFEST
+- require CQL::Parser v0.3
+
+v0.5 Sat Dec  4 22:20:40 CST 2004
+- CGI::Application framework courtesy of Brian Cassidy (who now shares
+  ownership of this module).
+- Updated Makefile.PL to include new dependencies.
+- Explain is now the default response.
+- Responses automatically have an echo section added to their XML when using 
+  the newFromRequest() factory method.
+- searchRetrieve and scan requests parse CQL where appropriate using
+  CQL::Parser.
+
+v0.4 Tue Nov 16 20:12:34 CST 2004
+- doc fixes and tuneups from Brian Cassidy
+
+v0.3 Sun Sep  5 15:17:35 CDT 2004
+- fixed SRU::Request::newFromCGI() and added test t/cgi.t
+- fixed stylesheet handling in response objects
+- fixed diagnostics handling
+
+v0.2 Sun Sep  5 08:06:49 CDT 2004
+- updated docs
+
+v0.1 Sun Sep  4 22:05:56 CDT 2004
+- initial release

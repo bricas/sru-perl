@@ -1,4 +1,5 @@
 Changes
+lib/Catalyst/Plugin/SRU.pm
 lib/SRU.pm
 lib/SRU/Server.pm
 lib/SRU/Request.pm

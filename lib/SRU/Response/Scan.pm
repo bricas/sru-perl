@@ -98,7 +98,7 @@ sub asXML {
     my $xml = 
         "<?xml version='1.0' ?>\n" . 
         $self->stylesheetXML() . "\n" . 
-        "<scanResponse xmlns="http://www.loc.gov/zing/srw/">\n" . 
+        "<scanResponse xmlns=\"http://www.loc.gov/zing/srw/\">\n" . 
         element( 'version', $self->version() );
 
     ## add all the terms if there are some

@@ -19,25 +19,25 @@ DEFAULT_RESPONSE: {
     my $content = $app->run();
     like( $content, qr|^Content-Type: text/xml|, 'content-type' );
     like( $content, qr|<foo>bar</foo>|, 'contains record' );
-    like( $app->run(), qr/<explainResponse>/, 'got default explain response' );
+    like( $app->run(), qr/<explainResponse/, 'got default explain response' );
 }
 
 EXPLAIN: {
     my $app = MyApp->new();
     $app->query( CGI->new( 'operation=explain' ) );
-    like( $app->run(), qr/<explainResponse>/, 'got explain response' );
+    like( $app->run(), qr/<explainResponse/, 'got explain response' );
 }
 
 SCAN: {
     my $app = MyApp->new();
     $app->query( CGI->new( 'operation=scan&version=1' ) );
-    like( $app->run(), qr/<scanResponse>/, 'got scan response' );
+    like( $app->run(), qr/<scanResponse/, 'got scan response' );
 }
 
 SEARCH_RETRIEVE: {
     my $app = MyApp->new();
     $app->query( CGI->new( 'operation=searchRetrieve&version=1' ) );
-    like( $app->run(), qr/<searchRetrieveResponse>/,    
+    like( $app->run(), qr/<searchRetrieveResponse/,    
         'got searchRetrieve response' );
 }
 

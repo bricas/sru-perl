@@ -96,7 +96,7 @@ sub asXML {
 <<"EXPLAIN_XML";
 <?xml version="1.0"?>
 $stylesheet
-<explainResponse>
+<explainResponse xmlns="http://www.loc.gov/zing/srw/">
 <version>1.1</version>
 $record
 $echoedExplainRequest

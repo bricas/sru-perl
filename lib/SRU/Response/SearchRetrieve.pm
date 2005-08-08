@@ -152,7 +152,7 @@ sub asXML {
 <<SEARCHRETRIEVE_XML;
 <?xml version='1.0' ?>
 $stylesheet
-<searchRetrieveResponse>
+<searchRetrieveResponse xmlns="http://www.loc.gov/zing/srw/">
 $version
 <numberOfRecords>$numberOfRecords</numberOfRecords>
 SEARCHRETRIEVE_XML

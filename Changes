@@ -1,5 +1,6 @@
 v0.89 Mon Aug  9 10:55:40 CST 2005
 - added Catalyst plugin
+- added default namespaces
 
 v0.88 Wed Feb  2 10:28:37 CST 2005
 - added resultSetId and resultSetIdleTime to searchRetrieve output

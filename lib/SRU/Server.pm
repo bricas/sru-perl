@@ -63,6 +63,9 @@ This method returns a searchRetrieve response.
 
 use base qw( CGI::Application Class::Accessor );
 
+use strict;
+use warnings;
+
 use SRU::Request;
 use SRU::Response;
 use SRU::Response::Diagnostic;

@@ -1,3 +1,6 @@
+v0.90 Thu Sep  1 12:17:20 CST 2005
+- added pod test
+
 v0.89 Mon Aug  9 10:55:40 CST 2005
 - added Catalyst plugin
 - added default namespaces

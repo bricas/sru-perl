@@ -188,7 +188,6 @@ SEARCHRETRIEVE_XML
 
     $xml .=
 <<SEARCHRETRIEVE_XML;
-</records>
 $diagnostics
 $extraResponseData 
 $echoedSearchRetrieveRequest

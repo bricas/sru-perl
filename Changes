@@ -1,3 +1,10 @@
+v0.91 Wed Oct  5 2005
+- modified Response/SearchRetrieve.pm to
+    - always return version 1.1
+    - allow different encoding types
+    - send back extra response data
+  (thanks Xiaorong Xiang and Eric Lease Morgan of the ockham project)
+
 v0.90 Thu Sep  1 12:17:20 CST 2005
 - added pod test
 

@@ -42,7 +42,7 @@ sub new {
         if ! ref($request) or ! $request->isa( 'SRU::Request::SearchRetrieve' );
 
     my $self =  $class->SUPER::new( {
-        version                         => $request->version(),
+        version                         => '1.1',
         numberOfRecords                 => 0,
         records                         => [],
         resultSetId                     => undef,
@@ -133,12 +133,16 @@ SRU::Response::SearchRetrieve->mk_accessors( qw(
 
 =head2 asXML()
 
-Returns the object serialized as XML. 
+	asXML(encoding=>"ISO-8859-1")
+
+Returns the object serialized as XML. UTF-8 and UTF-16 are default encodings if you don't pass the encoding parameter. You can define different encoding in order to parse you XML document correctly.
 
 =cut
 
 sub asXML {
-    my $self = shift;
+    my $self     = shift;
+    my %args     = @_;
+    my $encoding = $args{ encoding };
 
     my $numberOfRecords = $self->numberOfRecords();
     my $stylesheet = $self->stylesheetXML();
@@ -148,9 +152,18 @@ sub asXML {
     my $resultSetIdleTime = $self->resultSetIdleTime();
     my $resultSetId = $self->resultSetId();
 
+    my $extraResponseData = '<extraResponseData>' . $self->extraResponseData() . '</extraResponseData>';
+    my $xmltitle;
+    if( $encoding ) {
+        $xmltitle = "<?xml version='1.0' encoding='$encoding'?>";
+    }
+    else {
+        $xmltitle = "<?xml version='1.0'?>";
+    }
+
     my $xml = 
 <<SEARCHRETRIEVE_XML;
-<?xml version='1.0' ?>
+$xmltitle
 $stylesheet
 <searchRetrieveResponse xmlns="http://www.loc.gov/zing/srw/">
 $version
@@ -161,17 +174,23 @@ SEARCHRETRIEVE_XML
         if defined($resultSetId);
     $xml .= "<resultSetIdleTime>$resultSetIdleTime</resultSetIdleTime>\n"
         if defined($resultSetIdleTime);
-    $xml .= "<records>\n";
 
-    ## now add each record
-    foreach my $r ( @{ $self->{records} } ) {
-        $xml .= $r->asXML()."\n";
+    if( $numberOfRecords ) {
+        $xml .= "<records>\n";
+
+        ## now add each record
+        foreach my $r ( @{ $self->{records} } ) {
+            $xml .= $r->asXML()."\n";
+        }
+
+        $xml .= "</records>\n";
     }
 
     $xml .=
 <<SEARCHRETRIEVE_XML;
 </records>
 $diagnostics
+$extraResponseData 
 $echoedSearchRetrieveRequest
 </searchRetrieveResponse>
 SEARCHRETRIEVE_XML

@@ -56,8 +56,8 @@ Catalyst::Plugin::SRU - Dispatch SRU methods with Catalyst
 
 =head1 DESCRIPTION
 
-This plugin allows your controller class to dispatch XMLRPC methods
-from its own class.
+This plugin allows your controller class to dispatch SRU actions
+(C<explain>, C<scan>, and C<searchRetrieve>) from its own class.
 
 =head1 METHODS
 

@@ -70,10 +70,8 @@ the type of SRU request it finds. It will then pass the request over to your cus
 
 sub parse_sru {
 	my $c   = shift;
-	my $req = $c->req;
-	my $url = $req->uri . '?' . join( '&', map { $_ . '=' . $req->param( $_ ) } $req->param );
+	my $sru = SRU::Request->newFromURI( $c->req->uri );
 
-	my $sru = SRU::Request->newFromURI( $url );
 	$c->sru_request( $sru );
 	$c->sru_response( SRU::Response->newFromRequest( $c->sru_request ) );
 

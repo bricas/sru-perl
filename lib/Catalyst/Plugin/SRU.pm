@@ -9,7 +9,7 @@ use SRU::Response;
 use SRU::Response::Diagnostic;
 use CQL::Parser;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 __PACKAGE__->mk_classdata( 'sru_request' );
 __PACKAGE__->mk_classdata( 'sru_response' );
@@ -46,7 +46,7 @@ Catalyst::Plugin::SRU - Dispatch SRU methods with Catalyst
 	# $c->sru_response ISA SRU::Response::Scan
     }
 	
-    sub searchretrieve : Private {
+    sub searchRetrieve : Private {
         my ( $self, $c ) = @_;
 
 	# $c->cql ISA CQL::Parser root node
@@ -76,11 +76,11 @@ sub parse_sru {
 	$c->sru_response( SRU::Response->newFromRequest( $sru ) );
 
 	my $cql;
-	my $mode = lc( $sru->type );
+	my $mode = $sru->type;
 	if ( $mode eq 'scan' ) {
 		$cql = $sru->scanClause;
 	}
-	elsif ( $mode eq 'searchretrieve' ) {
+	elsif ( $mode eq 'searchRetrieve' ) {
 		$cql = $sru->query;
 	}
 

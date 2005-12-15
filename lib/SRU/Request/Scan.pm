@@ -61,6 +61,10 @@ my @validParams = qw(
     extraRequestData
 );
 
+=head2 validParams()
+
+=cut
+
 sub validParams { return @validParams; }
 
 SRU::Request::Scan->mk_accessors( @validParams );

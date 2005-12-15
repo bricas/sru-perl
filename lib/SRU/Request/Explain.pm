@@ -58,6 +58,10 @@ my @validParams = qw(
     extraRequestData 
 );
 
+=head2 validParams()
+
+=cut
+
 # no pod since this is used in SRU::Request
 sub validParams { return @validParams };
 

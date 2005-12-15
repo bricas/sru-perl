@@ -23,6 +23,7 @@ t/cgi.t
 t/cgi_app.t
 t/diagnostic.t
 t/pod.t
+t/pod_coverage.t
 t/record.t
 t/request_explain.t
 t/request_scan.t

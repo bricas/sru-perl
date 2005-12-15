@@ -79,6 +79,14 @@ my @accessors = qw( request response cql );
 
 __PACKAGE__->mk_accessors( @accessors );
 
+=head1 CGI::APPLICATION METHODS
+
+=head2 setup
+
+Sets the C<run_modes>, C<mode_param> and the default runmode (explain).
+
+=cut
+
 sub setup {
     my $self = shift;
 
@@ -86,6 +94,12 @@ sub setup {
     $self->start_mode( $modes[ DEFAULT ] );
     $self->mode_param( 'operation' );
 }
+
+=head2 cgiapp_prerun
+
+Parses the incoming SRU request and if needed, checks the CQL query.
+
+=cut
 
 sub cgiapp_prerun {
     my $self = shift;
@@ -115,6 +129,12 @@ sub cgiapp_prerun {
     }
 }
 
+=head2 cgiapp_postrun
+
+Sets the content type (text/xml) and serializes the response.
+
+=cut
+
 sub cgiapp_postrun {
     my $self       = shift;
     my $output_ref = shift;
@@ -123,6 +143,12 @@ sub cgiapp_postrun {
 
     $$output_ref = $self->response->asXML;
 }
+
+=head2 error_mode
+
+Stub error runmode.
+
+=cut
 
 sub error_mode {
 }

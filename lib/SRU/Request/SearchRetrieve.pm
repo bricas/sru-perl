@@ -73,6 +73,10 @@ my @validParams = qw(
     extraRequestData
 );
 
+=head2 validParams()
+
+=cut
+
 sub validParams { return @validParams };
 
 SRU::Request::SearchRetrieve->mk_accessors( @validParams );

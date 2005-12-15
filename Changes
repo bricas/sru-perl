@@ -1,6 +1,8 @@
 v0.92 Thu Dec 15 2005
 - updated Catalyst plugin for Catalyst 5.5
 - pod updates
+- made SRU::Response::type() more generic
+- added type() to SRU::Request
 
 v0.91 Wed Oct  5 2005
 - modified Response/SearchRetrieve.pm to

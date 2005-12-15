@@ -20,8 +20,7 @@ CONSTRUCTOR: {
     is( $request->recordSchema(), 'dc', 'recordSchema()' );
     is( $request->recordPacking(), 'XML', 'recordPacking()' );
     is( $request->stylesheet(), 'http://myserver.com/myStyle', 'stylesheet()' );
-
-
+    is( $request->type(), 'searchRetrieve', 'type()' );
 }
 
 CQL: {

@@ -73,10 +73,10 @@ sub parse_sru {
 	my $sru = SRU::Request->newFromURI( $c->req->uri );
 
 	$c->sru_request( $sru );
-	$c->sru_response( SRU::Response->newFromRequest( $c->sru_request ) );
+	$c->sru_response( SRU::Response->newFromRequest( $sru ) );
 
 	my $cql;
-	my $mode = lc( ( split( '::', ref $sru ) )[ -1 ] );
+	my $mode = lc( $sru->type );
 	if ( $mode eq 'scan' ) {
 		$cql = $sru->scanClause;
 	}

@@ -137,4 +137,17 @@ sub asXML {
     return $xml;
 }
 
+=head2 type()
+
+Returns 'searchRetrieve', 'scan' or 'explain' depending on what type of
+object it is.
+
+=cut
+
+sub type {
+    my $self  = shift;
+    my $class = ref $self || $self;
+    return lcfirst( ( split( '::', $class ) )[ -1 ] );
+}
+
 1;

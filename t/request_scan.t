@@ -20,6 +20,7 @@ CONSTRUCTOR: {
     is( $request->responsePosition(), 3, 'responsePosition()' );
     is( $request->maximumTerms(), 50, 'maximumTerms()' );
     is( $request->stylesheet(), 'http://myserver.com/myStyle', 'stylesheet()' );
+    is( $request->type(), 'scan', 'type()' );
 }
 
 FROM_URI: {

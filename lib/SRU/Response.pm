@@ -68,15 +68,9 @@ object it is.
 =cut
 
 sub type {
-    my $self = shift;
-    my $class = ref($self);
-    if ( $class eq 'SRU::Response::SearchRetrieve' ) { 
-        return 'searchRetrieve'; 
-    } elsif ( $class eq 'SRU::Response::Scan' ) {
-        return 'scan';
-    } elsif ( $class eq 'SRU::Response::Explain' ) { 
-        return 'explain';
-    }
+    my $self  = shift;
+    my $class = ref $self || $self;
+    return lcfirst( ( split( '::', $class ) )[ -1 ] );
 }
 
 =head2 addDiagnostic()

@@ -17,6 +17,7 @@ CONSTRUCTOR: {
     is( $request->recordPacking(), 'xml', 'recordPacking()' );
     is( $request->stylesheet(), 'http://www.example.com/style.xsl',
         'stylesheet()');
+    is( $request->type(), 'explain', 'type()' );
 }
 
 FROM_URI: {

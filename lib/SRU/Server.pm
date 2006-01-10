@@ -77,6 +77,24 @@ use constant DEFAULT => 0;
 my @modes     = qw( explain scan searchRetrieve error_mode );
 my @accessors = qw( request response cql );
 
+my @cql_errors = (
+    { regex => qr/does not support relational modifiers/,   code => 20 },
+    { regex => qr/expected boolean got /,                   code => 37 },
+    { regex => qr/expected relation modifier got /,         code => 20 },
+    { regex => qr/unknown first-class relation modifier: /, code => 20 },
+    { regex => qr/missing term/,                            code => 27 },
+    { regex => qr/expected proximity relation got /,        code => 40 },
+    { regex => qr/expected proximity distance got /,        code => 41 },
+    { regex => qr/expected proximity unit got/,             code => 42 },
+    { regex => qr/expected proximity ordering got /,        code => 43 },
+    { regex => qr/unknown first class relation: /,          code => 19 },
+    { regex => qr/must supply name/,                        code => 15 },
+    { regex => qr/must supply identifier/,                  code => 15 },
+    { regex => qr/must supply subtree/,                     code => 15 },
+    { regex => qr/must supply term parameter/,              code => 27 },
+    { regex => qr/doesn\'t support relations other than/,   code => 20 },
+);
+
 __PACKAGE__->mk_accessors( @accessors );
 
 =head1 CGI::APPLICATION METHODS
@@ -122,10 +140,19 @@ sub cgiapp_prerun {
         eval {
             $self->cql( CQL::Parser->new->parse( $cql ) );
         };
-        if ( $@ ) {
+        if ( my $error = $@ ) {
             $self->prerun_mode( $modes[ ERROR ] );
-            $self->response->addDiagnostic( SRU::Response::Diagnostic->newFromCode( 10 ) );
+            my $code = 10;
+            for( @cql_errors ) {
+                $code =  $_->{ code } if $error =~ $_->{ regex };
+            }
+            $self->response->addDiagnostic( SRU::Response::Diagnostic->newFromCode( $code ) );
         }
+    }
+
+    unless( $self->can( $mode ) ) {
+            $self->prerun_mode( $modes[ ERROR ] );
+            $self->response->addDiagnostic( SRU::Response::Diagnostic->newFromCode( 4 ) );
     }
 }
 

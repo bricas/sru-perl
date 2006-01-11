@@ -1,5 +1,6 @@
 v0.93 Mon Jan  9 2005
 - added better cql diagnostics for servers (Walter Lewis)
+- resolve possible method conflict in Catalyst plugin
 
 v0.92 Thu Dec 15 2005
 - updated Catalyst plugin for Catalyst 5.5

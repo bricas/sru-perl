@@ -122,11 +122,11 @@ sub parse_sru {
         $c->log->debug( qq/Couldn't find sru method "$mode"/ ) if $c->debug;
     }
 
-    $c->_serialize_response;
+    $c->_serialize_sru_response;
     return 0;
 }
 
-sub _serialize_response {
+sub _serialize_sru_response {
     my $c = shift;
 
     $c->res->content_type( 'text/xml' );

@@ -47,7 +47,7 @@ CQL_Error: {
     my $content = $app->run();
     like( $content, qr/<searchRetrieveResponse/,    
         'got searchRetrieve response' );
-    like( $content, qr|<uri>info:srw/diagnostic/1/27</uri>|, 'contains record' );
+    like( $content, qr|<uri>info:srw/diagnostic/1/27</uri>|, 'contains proper cql error' );
 }
 
 ############################

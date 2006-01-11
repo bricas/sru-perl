@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 8; 
+use Test::More tests => 10; 
 use CGI;
 
 ## flag to CGI::Application so that run() returns output
@@ -39,6 +39,15 @@ SEARCH_RETRIEVE: {
     $app->query( CGI->new( 'operation=searchRetrieve&version=1' ) );
     like( $app->run(), qr/<searchRetrieveResponse/,    
         'got searchRetrieve response' );
+}
+
+CQL_Error: {
+    my $app = MyApp->new();
+    $app->query( CGI->new( 'operation=searchRetrieve&version=1&query=dc.title > ""' ) );
+    my $content = $app->run();
+    like( $content, qr/<searchRetrieveResponse/,    
+        'got searchRetrieve response' );
+    like( $content, qr|<uri>info:srw/diagnostic/1/27</uri>|, 'contains record' );
 }
 
 ############################

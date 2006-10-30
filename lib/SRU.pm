@@ -3,7 +3,7 @@ package SRU;
 use strict;
 use warnings;
 
-our $VERSION = '0.93';
+our $VERSION = '0.94';
 
 =head1 NAME 
 
@@ -73,7 +73,7 @@ response.
 
 To understand the meaning of the various requests and their responses you'll
 want to read the docs at the Library of Congress. A good place to start is
-SRW/U In Five Hundred Words http://www.loc.gov/z3950/agency/zing/srw/brief.html
+this simple introductory page: http://www.loc.gov/standards/sru/simple.html
 For more information about working with the various request and response objects
 in this distribution see the POD in the individual packages:
 

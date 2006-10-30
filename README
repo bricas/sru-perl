@@ -8,7 +8,7 @@ alternative to Z39.50 for information providers who want to make
 their repositories available with a search/retrieval API. For more 
 information about SRU and its SOAP based sibling (SRW) see: 
 
-    http://www.loc.gov/z3950/agency/zing/srw/
+    http://www.loc.gov/standards/sru/
 
 INSTALLATION
 
@@ -35,7 +35,7 @@ more information about the Ockham project see: http://www.ockham.org
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2004 Ed Summers <ehs@pobox.com>
+Copyright (C) 2006 Ed Summers <ehs@pobox.com>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

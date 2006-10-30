@@ -1,5 +1,5 @@
 Changes
-lib/Catalyst/Plugin/SRU.pm
+lib/Catalyst/Controller/SRU.pm
 lib/SRU.pm
 lib/SRU/Server.pm
 lib/SRU/Request.pm
@@ -22,6 +22,7 @@ README
 t/cgi.t
 t/cgi_app.t
 t/diagnostic.t
+t/lib/MyApp.pm
 t/pod.t
 t/pod_coverage.t
 t/record.t
@@ -32,4 +33,3 @@ t/response_explain.t
 t/response_scan.t
 t/response_searchRetrieve.t
 t/term.t
-META.yml                                Module meta-data (added by MakeMaker)

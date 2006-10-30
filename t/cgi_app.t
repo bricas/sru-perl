@@ -1,13 +1,22 @@
 use strict;
 use warnings;
-use Test::More tests => 10; 
+
+use Test::More; 
 use CGI;
+use lib qw( t/lib );
+
+eval "use CGI::Application;";
+
+plan skip_all => "install CGI::Application if you want to use SRU::Server" if $@;
 
 ## flag to CGI::Application so that run() returns output
 ## rather than printing it.
 $ENV{ CGI_APP_RETURN_ONLY } = 1;
 
+plan tests => 10;
+
 INHERITANCE: {
+    require MyApp;
     my $app = MyApp->new();
     isa_ok( $app, 'MyApp' );
     isa_ok( $app, 'CGI::Application' );
@@ -49,30 +58,4 @@ CQL_Error: {
         'got searchRetrieve response' );
     like( $content, qr|<uri>info:srw/diagnostic/1/27</uri>|, 'contains proper cql error' );
 }
-
-############################
-## a harmless SRU::Server subclass 
-
-package MyApp;
-
-use base qw( SRU::Server );
-
-sub explain {
-    my $self = shift;
-    my $response = $self->response();
-    $response->record( 
-        SRU::Response::Record->new(
-            recordSchema => 'http://explain.z3950.org/dtd/2.0/',
-            recordData   => '<foo>bar</foo>'
-        )
-    );
-}
-
-sub searchRetrieve {
-}
-
-sub scan {
-}
-
-1;
 

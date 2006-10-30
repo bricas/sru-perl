@@ -1,4 +1,8 @@
-v0.93 Mon Jan  9 2005
+v0.94 Mon Oct 20 2006
+- removed dep on CGI::Application (it's only used for SRU::Server)
+- converted Catalyst::Plugin::SRU to a controller base class
+
+v0.93 Mon Jan  9 2006
 - added better cql diagnostics for servers (Walter Lewis)
 - resolve possible method conflict in Catalyst plugin
 

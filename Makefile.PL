@@ -15,7 +15,6 @@ WriteMakefile(
                             'XML::Simple'       => '',
                             'URI'               => '',
                             'Class::Accessor'   => '',
-                            'CGI::Application'  => '',
                             'CQL::Parser'       => '0.3',
                             'Test::Exception'   => '',
 			   },

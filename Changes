@@ -1,3 +1,6 @@
+v0.95 Tue Oct 21 2006
+- doc fixes
+
 v0.94 Mon Oct 20 2006
 - removed dep on CGI::Application (it's only used for SRU::Server)
 - converted Catalyst::Plugin::SRU to a controller base class

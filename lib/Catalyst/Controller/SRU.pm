@@ -19,25 +19,25 @@ Catalyst::Controller::SRU - Dispatch SRU methods with Catalyst
     # explain, scan and searchretrieve methods
     sub explain {
         my ( $self, $c,
-            $sru_request, # ISA SRU::Request::Explain
-            $sru_resuest, # ISA SRU::Response::Explain 
+            $sru_request,  # ISA SRU::Request::Explain
+            $sru_response, # ISA SRU::Response::Explain 
         ) = @_;
     }
     
     sub scan {
         my ( $self, $c,
-            $sru_request, # ISA SRU::Request::Scan
-            $sru_resuest, # ISA SRU::Response::Scan
-            $cql,         # ISA CQL::Parser root node
+            $sru_request,  # ISA SRU::Request::Scan
+            $sru_response, # ISA SRU::Response::Scan
+            $cql,          # ISA CQL::Parser root node
         ) = @_;
 
     }
     
     sub searchRetrieve {
         my ( $self, $c,
-            $sru_request, # ISA SRU::Request::SearchRetrieve
-            $sru_resuest, # ISA SRU::Response::SearchRetrieve
-            $cql,         # ISA CQL::Parser root node
+            $sru_request,  # ISA SRU::Request::SearchRetrieve
+            $sru_response, # ISA SRU::Response::SearchRetrieve
+            $cql,          # ISA CQL::Parser root node
         ) = @_;
     }
 
@@ -50,8 +50,8 @@ This module allows your controller class to dispatch SRU actions
 
 =head2 index : Private
 
-This method will create an SRU request, response and possibly a CQL object methods based on
-the type of SRU request it finds. It will then pass the data over to your customized method.
+This method will create an SRU request, response and possibly a CQL object based on the
+type of SRU request it finds. It will then pass the data over to your customized method.
 
 =cut
 

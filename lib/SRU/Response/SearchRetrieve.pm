@@ -133,7 +133,7 @@ SRU::Response::SearchRetrieve->mk_accessors( qw(
 
 =head2 asXML()
 
-	asXML(encoding=>"ISO-8859-1")
+    asXML(encoding=>"ISO-8859-1")
 
 Returns the object serialized as XML. UTF-8 and UTF-16 are default encodings if you don't pass the encoding parameter. You can define different encoding in order to parse you XML document correctly.
 

@@ -3,7 +3,7 @@ package Catalyst::Controller::SRU;
 use strict;
 use warnings;
 
-our $VERSION = '0.04';
+our $VERSION = '0.97';
 
 =head1 NAME
 
@@ -129,15 +129,11 @@ sub index : Private {
 
 =head1 AUTHOR
 
-=over 4 
-
-=item * Brian Cassidy E<lt>bricas@cpan.orgE<gt>
-
-=back
+Brian Cassidy E<lt>bricas@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2006 by Brian Cassidy
+Copyright 2008 by Brian Cassidy
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

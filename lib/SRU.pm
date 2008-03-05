@@ -3,7 +3,7 @@ package SRU;
 use strict;
 use warnings;
 
-our $VERSION = '0.96';
+our $VERSION = '0.97';
 
 =head1 NAME 
 
@@ -124,9 +124,14 @@ http://www.ockham.org.
 
 =head1 AUTHORS
 
-=over 4
+Ed Summers E<lt>ehs@pobox.comE<gt>
 
-=item * Ed Summers <ehs@pobox.com>
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2008 by Ed Summers
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself. 
 
 =cut
 

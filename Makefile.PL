@@ -1,22 +1,20 @@
-use ExtUtils::MakeMaker;
-use strict;
-use warnings;
+use inc::Module::Install 0.68;
 
-## create the Makefile
-WriteMakefile(
-    'NAME'         => 'SRU',
-    'DISTNAME'     => 'SRU',
-    'ABSTRACT'     => 'Search and Retrieve URL Service',
-    'VERSION_FROM' => 'lib/SRU.pm', 
-    'LICENSE'      => 'perl',
-    'PMLIBDIRS'    => [ qw( lib/ ) ],
-    'AUTHOR'       => 'Ed Summers <ehs@pobox.com>',
-    'PREREQ_PM'    => { 
-        'XML::LibXML'       => '',
-        'XML::Simple'       => '',
-        'URI'               => '',
-        'Class::Accessor'   => '',
-        'CQL::Parser'       => '0.3',
-        'Test::Exception'   => '',
-    },
-);
+if ( -e 'MANIFEST.SKIP' ) {
+    system( 'pod2text lib/SRU.pm > README' );
+}
+
+name 'SRU';
+all_from 'lib/SRU.pm';
+
+requires 'XML::LibXML';
+requires 'XML::Simple';
+requires 'URI';
+requires 'Class::Accessor';
+requires 'CQL::Parser' => '0.3';
+
+test_requires 'Test::More';
+test_requires 'Test::Exception';
+
+auto_install;
+WriteAll;

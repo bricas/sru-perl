@@ -1,3 +1,6 @@
+v0.98 Fri Nov 20 2009
+- repackaged with a new version of Module::Install
+
 v0.97 Wed Mar 05 2008
 - switched to Module::Install and repackaged
 

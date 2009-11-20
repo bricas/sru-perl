@@ -3,7 +3,7 @@ package SRU;
 use strict;
 use warnings;
 
-our $VERSION = '0.97';
+our $VERSION = '0.98';
 
 =head1 NAME 
 
@@ -128,7 +128,7 @@ Ed Summers E<lt>ehs@pobox.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2008 by Ed Summers
+Copyright 2004-2009 by Ed Summers
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

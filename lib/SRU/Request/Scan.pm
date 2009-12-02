@@ -3,7 +3,6 @@ package SRU::Request::Scan;
 use strict;
 use warnings;
 use base qw( Class::Accessor SRU::Request );
-use UNIVERSAL qw( isa );
 use SRU::Utils qw( error );
 
 =head1 NAME

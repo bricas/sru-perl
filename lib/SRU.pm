@@ -3,7 +3,7 @@ package SRU;
 use strict;
 use warnings;
 
-our $VERSION = '0.98';
+our $VERSION = '0.99';
 
 =head1 NAME 
 

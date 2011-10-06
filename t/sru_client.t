@@ -5,8 +5,19 @@
 
 # change 'tests => 1' to 'tests => last_test_to_print';
 
-use Test::More tests => 14;
-BEGIN { use_ok('SRU::Client') };
+use Test::More;
+BEGIN { 
+	# delete $ENV{HTTP_PROXY};	# uncomment this line if you fail the network connection test
+
+	eval "use Moose;";
+	eval "use LWP::Simple;";
+	eval "use Carp;";
+
+	plan skip_all => "install Moose, LWP::Simple and Carp if you want to use SRU::Client" if $@;
+
+	plan tests => 15;
+	use_ok('SRU::Client');
+}
 
 #########################
 
@@ -20,6 +31,10 @@ $client = SRU::Client->new(
 		);
 	
 #?operation=searchRetrieve&version=1.1&recordSchema=lom&query=rec.collectionIdentifier=6a6176612e7574696c2e52616e646f6d40326630663837
+
+#### check if HTTP_PROXY is obstructing the test
+use LWP::Simple qw( get );
+ok( get('http://www.google.co.uk'), 'Checking network connection (see documentation for BUGS)' );
 
 isa_ok($client, 'SRU::Client', 'checking object class');
 
@@ -67,12 +82,16 @@ ok( ! defined $response, "There shouldn't be more responses than records, n'est-
 
 done_testing();
 
-print STDERR <<"OUTPUT";
-
-=====
-request query
-startRecord of next request: $nextStartRecord
-number of records: $numberOfRecords
-record position: $recordPosition
-=====
-OUTPUT
+#### For diagnostics ####
+#
+# print STDERR <<"OUTPUT";
+# 
+# =====
+# request query
+# startRecord of next request: $nextStartRecord
+# number of records: $numberOfRecords
+# record position: $recordPosition
+# =====
+# OUTPUT
+#
+####

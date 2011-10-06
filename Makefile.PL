@@ -14,9 +14,6 @@ requires 'XML::Simple';
 requires 'URI';
 requires 'Class::Accessor';
 requires 'CQL::Parser' => '0.3';
-# for SRU::Client
-requires 'Moose';
-requires 'LWP::Simple';
 
 test_requires 'Test::More';
 test_requires 'Test::Exception';

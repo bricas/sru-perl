@@ -15,6 +15,10 @@ requires 'URI';
 requires 'Class::Accessor';
 requires 'CQL::Parser' => '0.3';
 
+recommends 'Moose';
+recommends 'LWP::Simple';
+recommends 'Carp';
+
 test_requires 'Test::More';
 test_requires 'Test::Exception';
 

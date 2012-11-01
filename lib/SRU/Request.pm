@@ -8,6 +8,7 @@ use SRU::Request::SearchRetrieve;
 use SRU::Request::Scan;
 use SRU::Utils qw( error );
 use SRU::Utils::XML qw( escape );
+use Scalar::Util qw(reftype);
 
 our %PARAMETERS = (
     'explain' => 
@@ -40,11 +41,9 @@ they contain.
 
 =head1 METHODS
 
-=head2 newFromURI()
+=head2 new( %query | $uri | $cgi | $env )
 
-newFromURI() is a factory method which you pass a complete SRU url. 
-newFromURI() will return an appropriate object for the type of request being 
-conducted:
+Create a new request object which is one of:
 
 =over 4
 
@@ -56,19 +55,45 @@ conducted:
 
 =back
 
+One can pass query parameters as hash, as URL, as L<URI>, as L<CGI> object or
+as L<PSGI> request.
+
 If the request is not formatted properly the call will return undef. 
 The error encountered should be available in $SRU::Error.
 
 =cut
 
-sub newFromURI {
-    my ($class,$uri) = @_;
+sub new {
+    my $class = shift;
 
-    ## be nice and try to turn a string into a URI if necessary
-    if ( ! UNIVERSAL::isa( $uri, 'URI' ) ) { $uri = URI->new($uri); }
-    return error( "invalid uri: $uri" ) if ! UNIVERSAL::isa( $uri, 'URI' ); 
+    my %query;
 
-    my %query     = $uri->query_form();
+    if ( @_ % 2 ) {
+        my $q = shift;
+
+        if ( UNIVERSAL::isa( $q, 'CGI' ) ) {
+            ## we must have ampersands between query string params, but lets
+            ## make sure we don't screw anybody else up
+            my $saved = $CGI::USE_PARAM_SEMICOLONS; 
+            $CGI::USE_PARAM_SEMICOLONS = 0;
+            $q = $q->self_url;
+            $CGI::USE_PARAM_SEMICOLONS = $saved;
+        } elsif ( (reftype $q // '') eq 'HASH' ) {
+            $q = "http://example.org/?" . $q->{QUERY_STRING};
+        }
+            
+        if ( ! UNIVERSAL::isa( $q, 'URI' ) ) { 
+            $q = URI->new($q);
+        }
+        if ( UNIVERSAL::isa( $q, 'URI' ) ) {
+            %query = $q->query_form;
+        } else {
+            return error( "invalid uri: $q" ) 
+        }
+    } else {
+        %query = @_;
+    }
+
     my $operation = $query{operation} || 'explain';
 
     my $request;
@@ -84,32 +109,19 @@ sub newFromURI {
     }
 
     return $request;
+
 }
 
-=head2 newFromCGI()
+=head2 newFromURI
 
-A factory method for creating a request object from a CGI object.
+=head2 newFromCGI
 
-    my $cgi = CGI->new();
-    my $request = SRU::Request->newFromCGI( $cgi );
+Deprecated aliases for C<new>.
 
 =cut
 
-sub newFromCGI {
-    my ($class,$cgi) = @_;
-
-    ## We want either an actual CGI object
-    return error( "invalid CGI object" ) unless UNIVERSAL::isa( $cgi, 'CGI' );
-
-    ## we must have ampersands between query string params, but lets
-    ## make sure we don't screw anybody else up
-    my $saved = $CGI::USE_PARAM_SEMICOLONS; 
-    $CGI::USE_PARAM_SEMICOLONS = 0;
-    my $url = $cgi->self_url();
-    $CGI::USE_PARAM_SEMICOLONS = $saved;
-
-    return $class->newFromURI( $url );
-}
+*newFromURI = *new;
+*newFromCGI = *new;
 
 =head2 asXML()
 

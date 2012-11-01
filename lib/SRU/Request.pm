@@ -9,6 +9,17 @@ use SRU::Request::Scan;
 use SRU::Utils qw( error );
 use SRU::Utils::XML qw( escape );
 
+our %PARAMETERS = (
+    'explain' => 
+        [qw(version recordPacking stylesheet extraRequestData)],
+    'scan' => 
+        [qw(version scanClause responsePosition maximumTerms stylesheet 
+           extraRequestData)],
+    'searchRetrieve' => 
+        [qw(version query startRecord maximumRecords recordPacking recordSchema
+           recordXPath resultSetTTL sortKeys stylesheet extraRequestData)]
+);
+
 =head1 NAME
 
 SRU::Request - Factories for creating SRU request objects. 
@@ -136,6 +147,31 @@ sub asXML {
     $xml .= "</$type>";
     return $xml;
 }
+
+=head2 asURI( [ $base ] )
+
+Creates a L<URI> of this request. The optional C<base> URL, provided as
+string or as L<URI>, is set to C<http://localhost/> by default.
+
+=cut
+
+sub asURI {
+    my ($self, $base) = @_;
+
+    my $uri = URI->new($base // "http://localhost/");
+    my %query = $uri->query_form;
+
+    $query{operation} = $self->type;
+    
+    no strict 'refs';
+    foreach (@{ $PARAMETERS{ $self->type } }) {
+        $query{$_} = $self->$_ if defined $self->$_;
+    }
+
+    $uri->query_form( \%query );
+    return $uri;
+}
+
 
 =head2 type()
 

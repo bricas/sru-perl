@@ -3,7 +3,7 @@ package SRU;
 use strict;
 use warnings;
 
-our $VERSION = '0.99';
+our $VERSION = '1.00';
 
 =head1 NAME 
 
@@ -97,6 +97,8 @@ in this distribution see the POD in the individual packages:
 
 =item * L<SRU::Server>
 
+=item * L<SRU::Client>
+
 =back
 
 Questions and comments are more than welcome. This software was developed as
@@ -108,7 +110,7 @@ http://www.ockham.org.
 
 =over 4 
 
-=item * create a client (SRU::Client)
+=item * test and improve submitted client (SRU::Client)
 
 =item * allow searchRetrieve responses to be retrieved as RSS
 

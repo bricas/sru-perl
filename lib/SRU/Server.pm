@@ -69,31 +69,13 @@ use warnings;
 use SRU::Request;
 use SRU::Response;
 use SRU::Response::Diagnostic;
-use CQL::Parser;
+use CQL::Parser 1.12;
 
 use constant ERROR   => -1;
 use constant DEFAULT => 0;
 
 my @modes     = qw( explain scan searchRetrieve error_mode );
 my @accessors = qw( request response cql );
-
-my @cql_errors = (
-    { regex => qr/does not support relational modifiers/,   code => 20 },
-    { regex => qr/expected boolean got /,                   code => 37 },
-    { regex => qr/expected relation modifier got /,         code => 20 },
-    { regex => qr/unknown first-class relation modifier: /, code => 20 },
-    { regex => qr/missing term/,                            code => 27 },
-    { regex => qr/expected proximity relation got /,        code => 40 },
-    { regex => qr/expected proximity distance got /,        code => 41 },
-    { regex => qr/expected proximity unit got/,             code => 42 },
-    { regex => qr/expected proximity ordering got /,        code => 43 },
-    { regex => qr/unknown first class relation: /,          code => 19 },
-    { regex => qr/must supply name/,                        code => 15 },
-    { regex => qr/must supply identifier/,                  code => 15 },
-    { regex => qr/must supply subtree/,                     code => 15 },
-    { regex => qr/must supply term parameter/,              code => 27 },
-    { regex => qr/doesn\'t support relations other than/,   code => 20 },
-);
 
 __PACKAGE__->mk_accessors( @accessors );
 
@@ -137,16 +119,12 @@ sub cgiapp_prerun {
     }
 
     if( defined $cql ) {
-        eval {
-            $self->cql( CQL::Parser->new->parse( $cql ) );
-        };
-        if ( my $error = $@ ) {
+        $cql = CQL::Parser->new->parseSafe( $cql );
+        if (ref $cql) {
+            $self->cql( $cql );
+        } else {
             $self->prerun_mode( $modes[ ERROR ] );
-            my $code = 10;
-            for( @cql_errors ) {
-                $code =  $_->{ code } if $error =~ $_->{ regex };
-            }
-            $self->response->addDiagnostic( SRU::Response::Diagnostic->newFromCode( $code ) );
+            $self->response->addDiagnostic( SRU::Response::Diagnostic->newFromCode( $cql ) );
         }
     }
 
@@ -187,6 +165,8 @@ sub error_mode {
 =item * Brian Cassidy E<lt>bricas@cpan.orgE<gt>
 
 =item * Ed Summers E<lt>ehs@pobox.comE<gt>
+
+=item * Jakob Voss E<lt>voss@gbv.deE<gt>
 
 =back
 

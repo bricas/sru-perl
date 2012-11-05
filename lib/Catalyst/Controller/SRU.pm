@@ -60,25 +60,7 @@ use base qw( Catalyst::Controller );
 use SRU::Request;
 use SRU::Response;
 use SRU::Response::Diagnostic;
-use CQL::Parser;
-
-my @cql_errors = (
-    { regex => qr/does not support relational modifiers/,   code => 20 },
-    { regex => qr/expected boolean got /,                   code => 37 },
-    { regex => qr/expected relation modifier got /,         code => 20 },
-    { regex => qr/unknown first-class relation modifier: /, code => 20 },
-    { regex => qr/missing term/,                            code => 27 },
-    { regex => qr/expected proximity relation got /,        code => 40 },
-    { regex => qr/expected proximity distance got /,        code => 41 },
-    { regex => qr/expected proximity unit got/,             code => 42 },
-    { regex => qr/expected proximity ordering got /,        code => 43 },
-    { regex => qr/unknown first class relation: /,          code => 19 },
-    { regex => qr/must supply name/,                        code => 15 },
-    { regex => qr/must supply identifier/,                  code => 15 },
-    { regex => qr/must supply subtree/,                     code => 15 },
-    { regex => qr/must supply term parameter/,              code => 27 },
-    { regex => qr/doesn\'t support relations other than/,   code => 20 },
-);
+use CQL::Parser 1.12;
 
 sub index : Private {
     my( $self, $c ) = @_;
@@ -97,13 +79,10 @@ sub index : Private {
     }
 
     if( defined $cql ) {
-        push @args, eval { CQL::Parser->new->parse( $cql ) };
-        if ( my $error = $@ ) {
-            my $code = 10;
-            for( @cql_errors ) {
-                $code =  $_->{ code } if $error =~ $_->{ regex };
-            }
-            $sru_response->addDiagnostic( SRU::Response::Diagnostic->newFromCode( $code ) );
+        $cql = CQL::Parser->new->parseSafe( $cql );
+        push @args, $cql;
+        unless ( ref $cql ) {
+            $sru_response->addDiagnostic( SRU::Response::Diagnostic->newFromCode( $cql ) );
         }
     }
 
@@ -124,6 +103,8 @@ sub index : Private {
 =over 4
 
 =item * L<Catalyst>
+
+=item * L<SRU>
 
 =back
 

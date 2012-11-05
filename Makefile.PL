@@ -1,4 +1,4 @@
-use inc::Module::Install 0.91;
+use inc::Module::Install 1.06;
 
 if ( -e 'MANIFEST.SKIP' ) {
     system( 'pod2text lib/SRU.pm > README' );
@@ -18,6 +18,6 @@ requires 'CQL::Parser' => '1.12';
 test_requires 'Test::More';
 test_requires 'Test::Exception';
 
-repository "http://github.com/bricas/sru-perl/tree/master";
+repository "http://github.com/bricas/sru-perl";
 
 WriteAll;

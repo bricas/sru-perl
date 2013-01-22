@@ -12,7 +12,7 @@
 \bMakeMaker-\d
 \bpm_to_blib$
 \bblibdirs$
-^MANIFEST\.SKIP
+^MANIFEST\.SKIP$
 ^MYMETA
 
 # Avoid Module::Build generated and utility files.

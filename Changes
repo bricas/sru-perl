@@ -1,4 +1,9 @@
-Change History
+Revision history for perl module SRU
+
+1.00 2013-01-22
+ - Add asURI() method to SRU::Request
+ - SRU::Request constructor now supports PSGI
+ - CQL error handling is now in CQL::Parser
 
 0.99 2009-12-02
  - remove use of UNIVERSAL->import

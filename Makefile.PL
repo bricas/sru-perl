@@ -4,7 +4,7 @@ if ( -e 'MANIFEST.SKIP' ) {
     system( 'pod2text lib/SRU.pm > README' );
 }
 
-perl_version '5.008';
+perl_version '5.10.1';
 
 name 'SRU';
 all_from 'lib/SRU.pm';

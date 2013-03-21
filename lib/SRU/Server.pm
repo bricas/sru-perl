@@ -1,8 +1,5 @@
 package SRU::Server;
-
-=head1 NAME 
-
-SRU::Server - respond to SRU requests via CGI::Application
+#ABSTRACT: Respond to SRU requests via CGI::Application
 
 =head1 SYNOPSIS
 
@@ -160,7 +157,7 @@ sub error_mode {
 
 =head1 AUTHORS
 
-=over 4 
+=over 4
 
 =item * Brian Cassidy E<lt>bricas@cpan.orgE<gt>
 

@@ -1,4 +1,5 @@
 package SRU::Request;
+#ABSTRACT: Factories for creating SRU request objects. 
 
 use strict;
 use warnings;
@@ -20,10 +21,6 @@ our %PARAMETERS = (
         [qw(version query startRecord maximumRecords recordPacking recordSchema
            recordXPath resultSetTTL sortKeys stylesheet extraRequestData)]
 );
-
-=head1 NAME
-
-SRU::Request - Factories for creating SRU request objects. 
 
 =head1 SYNOPSIS
 

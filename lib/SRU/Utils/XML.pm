@@ -1,14 +1,11 @@
 package SRU::Utils::XML;
+#ABSTRACT: XML utility functions for SRU
 
 use strict;
 use warnings;
 use base qw( Exporter );
 
 our @EXPORT_OK = qw( element elementNoEscape escape stylesheet );
-
-=head1 NAME
-
-SRU::Utils::XML - XML utility functions for SRU
 
 =head1 SYNOPSIS
 

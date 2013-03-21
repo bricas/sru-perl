@@ -1,14 +1,11 @@
 package SRU::Response::Term;
+#ABSTRACT: A class for representing terms in a Scan response
 
 use strict;
 use warnings;
 use SRU::Utils qw( error );
 use SRU::Utils::XML qw( element elementNoEscape );
 use base qw( Class::Accessor );
-
-=head1 NAME
-
-SRU::Response::Term - A class for representing terms in a Scan response
 
 =head1 SYNOPSIS
 

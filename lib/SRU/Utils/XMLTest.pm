@@ -1,4 +1,5 @@
 package SRU::Utils::XMLTest;
+#ABSTRACT: XML testing utility functions
 
 use strict;
 use warnings;
@@ -6,10 +7,6 @@ use XML::LibXML;
 use base qw( Exporter );
 
 our @EXPORT = qw( wellFormedXML );
-
-=head1 NAME
-
-SRU::Utils::XMLTest - XML testing utility functions
 
 =head1 SYNOPSIS
 

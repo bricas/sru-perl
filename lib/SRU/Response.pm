@@ -1,4 +1,5 @@
 package SRU::Response;
+#ABSTRACT: A factory for creating SRU response objects
 
 use strict;
 use warnings;
@@ -7,10 +8,6 @@ use SRU::Response::Scan;
 use SRU::Response::SearchRetrieve;
 use SRU::Utils qw( error );
 use SRU::Utils::XML qw( stylesheet );
-
-=head1 NAME
-
-SRU::Response - A factory for creating SRU response objects
 
 =head1 SYNOPSIS
 

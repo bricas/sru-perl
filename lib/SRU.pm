@@ -1,13 +1,8 @@
 package SRU;
+#ABSTRACT: Search and Retrieval by URL
 
 use strict;
 use warnings;
-
-our $VERSION = '1.00';
-
-=head1 NAME 
-
-SRU - Search and Retrieval by URL
 
 =head1 SYNOPSIS
 
@@ -120,18 +115,9 @@ http://www.ockham.org.
 
 =back
 
-=cut
-
 =head1 AUTHORS
 
-Ed Summers E<lt>ehs@pobox.comE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2004-2013 by Ed Summers
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself. 
+Ed Summers <ehs@pobox.com>
 
 =cut
 

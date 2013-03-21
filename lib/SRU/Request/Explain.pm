@@ -1,13 +1,10 @@
 package SRU::Request::Explain;
+#ABSTRACT: A class for representing SRU explain requests
 
 use strict;
 use warnings;
 use base qw( Class::Accessor SRU::Request );
 use SRU::Utils qw( error );
-
-=head1 NAME
-
-SRU::Request::Explain - A class for representing SRU explain requests
 
 =head1 SYNOPSIS
 

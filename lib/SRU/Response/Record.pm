@@ -1,4 +1,5 @@
 package SRU::Response::Record;
+#ABSTRACT: A class for representing a result record in a searchRetrieve response.
 
 use strict;
 use warnings;
@@ -7,11 +8,6 @@ use SRU::Utils::XML qw( element elementNoEscape );
 use Carp qw( croak );
 
 use base qw( Class::Accessor );
-
-=head1 NAME
-
-SRU::Response::Record - A class for representing a result record in a
-searchRetrieve response.
 
 =head1 SYNOPSIS
 

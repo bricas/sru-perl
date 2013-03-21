@@ -1,13 +1,10 @@
 package SRU::Response::Scan;
+#ABSTRACT: A class for representing SRU scan responses
 
 use strict;
 use warnings;
 use base qw( Class::Accessor SRU::Response );
 use SRU::Utils::XML qw( element elementNoEscape );
-
-=head1 NAME
-
-SRU::Response::Scan - A class for representing SRU scan responses
 
 =head1 SYNOPSIS
 

@@ -1,13 +1,10 @@
 package SRU::Request::Scan;
+#ABSTRACT: A class for representing SRU scan requests
 
 use strict;
 use warnings;
 use base qw( Class::Accessor SRU::Request );
 use SRU::Utils qw( error );
-
-=head1 NAME
-
-SRU::Request::Scan - A class for representing SRU scan requests
 
 =head1 SYNOPSIS
 

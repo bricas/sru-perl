@@ -1,4 +1,5 @@
 package SRU::Response::Explain;
+#ABSTRACT: A class for representing SRU explain responses
 
 use strict;
 use warnings;
@@ -7,10 +8,6 @@ use SRU::Response::Diagnostic;
 use SRU::Utils qw( error );
 use SRU::Utils::XML qw( element );
 use Carp qw( croak );
-
-=head1 NAME
-
-SRU::Response::Explain - A class for representing SRU explain responses
 
 =head1 SYNOPSIS
     

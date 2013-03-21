@@ -1,13 +1,8 @@
 package Catalyst::Controller::SRU;
+#ABSTRACT: Dispatch SRU methods with Catalyst
 
 use strict;
 use warnings;
-
-our $VERSION = '1.00';
-
-=head1 NAME
-
-Catalyst::Controller::SRU - Dispatch SRU methods with Catalyst
 
 =head1 SYNOPSIS
 
@@ -108,16 +103,9 @@ sub index : Private {
 
 =back
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Brian Cassidy E<lt>bricas@cpan.orgE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2005-2013 by Brian Cassidy
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself. 
+Brian Cassidy <bricas@cpan.org>
 
 =cut
 

@@ -1,4 +1,5 @@
 package SRU::Response::Diagnostic;
+#ABSTRACT: An SRU diagnostic message
 
 use strict;
 use warnings;
@@ -97,10 +98,6 @@ our %DIAG = (
     120 => 'Response portion out of range',
 
 );
-
-=head1 NAME
-
-SRU::Response::Diagnostic - An SRU diagnostic message
 
 =head1 SYNOPSIS
 

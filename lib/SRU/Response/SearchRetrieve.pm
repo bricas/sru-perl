@@ -1,4 +1,5 @@
 package SRU::Response::SearchRetrieve;
+#ABSTRACT: A class for representing SRU searchRetrieve responses
 
 use strict;
 use warnings;
@@ -6,11 +7,6 @@ use base qw( Class::Accessor SRU::Response );
 use SRU::Utils::XML qw( element );
 use SRU::Utils qw( error );
 use SRU::Response::Record;
-
-=head1 NAME
-
-SRU::Response::SearchRetrieve - A class for representing SRU searchRetrieve 
-responses
 
 =head1 SYNOPSIS
 

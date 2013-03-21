@@ -1,14 +1,11 @@
 package SRU::Request::SearchRetrieve;
+#ABSTRACT: A class for representing SRU searchRetrieve requests
 
 use strict;
 use warnings;
 use base qw( Class::Accessor SRU::Request );
 use SRU::Utils qw( error );
 use CQL::Parser;
-
-=head1 NAME
-
-SRU::Request::SearchRetrieve - A class for representing SRU searchRetrieve requests
 
 =head1 SYNOPSIS
 

@@ -1,14 +1,11 @@
 package SRU::Utils;
+#ABSTRACT: Utility functions for SRU
 
 use strict;
 use warnings;
 use base qw( Exporter );
 
 our @EXPORT_OK = qw( error );
-
-=head1 NAME
-
-SRU::Utils - Utility functions for SRU
 
 =head1 SYNOPSIS
 

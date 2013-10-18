@@ -1,5 +1,8 @@
 Revision history for perl module SRU
 
+1.01 2013-10-18
+ - Move POD tests to release testing (RT #89420)
+
 1.00 2013-01-22
  - Add asURI() method to SRU::Request
  - SRU::Request constructor now supports PSGI

@@ -110,7 +110,7 @@ our %DIAG = (
 
 =head1 DESCRIPTION
 
-You probably won't need to use this class since it used interally
+You probably won't need to use this class since it used internally
 to store diagnostic messages.
 
 =head1 METHOD

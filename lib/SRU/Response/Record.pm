@@ -43,7 +43,7 @@ be the full URI.
 =head2 recordData()
 
 The record itself, either as a string or embedded XML. If would like 
-to pass an object in here you may do so as long as it imlements the
+to pass an object in here you may do so as long as it implements the
 asXML() method.
 
 =head2 recordPacking()
@@ -54,7 +54,7 @@ The packing used in recordData, as requested by the client or the default:
 =head2 recordPosition()
 
 The position of the record within the result set. If you don't pass this
-in recordPosition will be automaticlly calculated for you when add
+in recordPosition will be automatically calculated for you when add
 or retrieve a record from a SRU::Response::SearchRetrieve object.
 
 =head2 extraRecordData()
